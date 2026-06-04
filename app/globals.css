@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* ==========================================
+   Developer Profile Floating Animation
+   ========================================== */
+
+@keyframes profileFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.profile-float {
+  animation: profileFloat 4s ease-in-out infinite;
+}
+
+/* ==========================================
+   Cat Floating Animation
+   ========================================== */
+
+@keyframes catFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cat-float {
+  animation: catFloat 3s ease-in-out infinite;
+}
+
+/* ==========================================
+   Button Floating Animation
+   ========================================== */
+
+@keyframes buttonFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    transform: translate(-50%, -56%);
+  }
+}
+
+.cta-button-float {
+  animation: buttonFloat 3s ease-in-out infinite;
+}
