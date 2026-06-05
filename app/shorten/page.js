@@ -8,7 +8,6 @@ const Shorten = () => {
   const [generated, setGenerated] = useState("");
 
   const generate = () => {
-
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -27,12 +26,12 @@ const Shorten = () => {
     fetch("/api/generate", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        setGenerated(`${window.location.origin}/${shorturl}`)
-        seturl("")
-        setshorturl("")
-        console.log(result)
-        alert(result.message)
-    })
+        setGenerated(`${window.location.origin}/${shorturl}`);
+        seturl("");
+        setshorturl("");
+        console.log(result);
+        alert(result.message);
+      })
       .catch((error) => console.error(error));
   };
 
@@ -68,9 +67,31 @@ const Shorten = () => {
         </button>
       </div>
 
-      {generated && <>
-        <span className="font-bold text-lg">Your link:</span> <code><Link target="_blank" href={generated}>{generated}</Link>
-        </code> </>}
+      {generated && (
+        <div className="bg-white p-4 rounded-lg border mt-4">
+          <p className="font-bold text-lg mb-2">Your Short URL</p>
+
+          <div className="flex items-center justify-between gap-2">
+            <Link
+              target="_blank"
+              href={generated}
+              className="text-purple-600 font-medium hover:underline"
+            >
+              bitlinks/.../{shorturl}
+            </Link>
+
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(generated);
+                alert("Copied to clipboard!");
+              }}
+              className="bg-purple-500 text-white px-3 py-1 rounded-md cursor-pointer"
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
